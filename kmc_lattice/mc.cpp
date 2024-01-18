@@ -157,7 +157,7 @@ double MC::MoveMolecule()
                 }
                 if(bonded_neighbor_hbondlist[p].arm1==old_hbond.arm2)
                     bonded_index2=p;
-                }
+                
             }                 
             E_dis+=free_bonds*S.free_bond_freeenergy;
                 
