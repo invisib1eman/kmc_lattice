@@ -3,8 +3,7 @@
 #ifndef _GRAPH_H
 #define _GRAPH_H
 #include "utils.h"
-#include "xyz.h"
-#include "quarternion.h"
+#include "molecule.h"
 #include "header.h"
 class Graph {
 private:

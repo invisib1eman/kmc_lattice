@@ -14,14 +14,14 @@ int main(int argc, char *argv[])
     System sys;
     sys.ReadInput(argc,argv);
     sys.Create();
-    sys.WriteMol2(0);
+    sys.WriteDump(0);
 	
     MC mc;
     mc.S=sys;
     mc.Sweep();
     
 	//Finalize Random number
-	gsl_rng_free(sys.gsl_r);
+	//gsl_rng_free(sys.gsl_r);
 	time(&end);
 	cout<<"Time Elapsed="<<difftime(end,start)<<endl;
     return 0;
@@ -32,3 +32,4 @@ int main(int argc, char *argv[])
    cout<<a.z<<endl;
    return 0;*/
 }
+

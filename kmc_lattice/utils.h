@@ -2,30 +2,20 @@
 #ifndef _UTILS_H
 #define _UTILS_H
 #include "header.h"
+#include "molecule.h"
+#include "lattice.h"
+#include "aggregate.h"
+#include "hbond.h"
 #include "xyz.h"
-#include "quarternion.h"
-#include "system.h"
-XYZ image(XYZ , double);
-double min_d2(XYZ a, XYZ b, double L);
-double myfmod(double x, double y);
-XYZ RandomTranslate(XYZ old, double step,double u,double v);
-XYZ RandomTranslatestep(double step,double u,double v);
-double inner_product(XYZ a,XYZ b);
-XYZ cross_product(XYZ a,XYZ b);
-double angle_vectors(XYZ a,XYZ b);
-double dihedral_vectors(XYZ a,XYZ b,XYZ c);
-quarternion RandomRotate(quarternion old, double step,double a,double b);
-quarternion RandomRotatestep(double step,double a,double b);
-int getNum(vector<int>& v);
-vector<int> generateRandom(int n);
-int GridIndex_index(int i,int j,int k,int n);//return gridindex based on index of x, y, z (n is grids number in one direction)directions 
-int GridIndex_xyz(XYZ& p,int n,double dl,double L);//return gridindex based on position p, dl is grid length
-void GridLoc(int& i,int& j,int& k,int n,int index);//update xyz index based on grid index
-int neighborarm(int n);
-//quarternion Rotate(quarternion old,double a,double b,double c);
-XYZ real_vector(XYZ origin,double L);
-vector<Molecule> generate_unitcell(Molecule M1);
-vector<Molecule> generate_newunit(vector<Molecule> origin_cell,int latticeindex1,int latticeindex2,int latticeindex3);
-bool Aresame(double a,double b);
+vector<int> Lattice_index2_4index(int LatticeID,int Ng,int Nbasis);
+int Lattice_4index2_index(vector<int> Lattice4ID,int Ng,int Nbasis);
+XYZ Lattice4ID2XYZ(vector<int> Lattice4ID,vector<XYZ> BasisPoints,vector<XYZ> LatticeVectors);
+vector<int> Translate_Lattice4ID(vector<int> Lattice4ID,vector<int> Lattice4ID_translate,int Ng);
+int bondarm(int arm);
+int neighborarm(int arm);
+void DFSUtil(int index_ag,int v,bool visited[],vector<Molecule>& M,Aggregate& new_aggregate);
+int newvertype(int oldvertype, int changevertype);
+bool bondstate(int arm1,int arm2);
+
 
 #endif

@@ -1,15 +1,15 @@
 PROG1 = NANOROD
 
-SRC1 = main.cpp system.cpp utils.cpp mc.cpp quarternion.cpp
+SRC1 = main.cpp system.cpp utils.cpp mc.cpp
 
 OBJS1 = ${SRC1:.cpp=.o}
 
 CXX = g++
 CXXFLAGS= -lboost_program_options -lgsl -lgslcblas -std=c++11 -lm
 #on ubuntu
-#LIBS=-I/usr/include
-#on Mac M1
-LIBS=-I/opt/homebrew/include -L/opt/homebrew/lib
+LIBS=-I/usr/include
+
+#LIBS=-I/opt/homebrew/include -L/opt/homebrew/lib
 #-L/usr/local/gsl/lib
 
 

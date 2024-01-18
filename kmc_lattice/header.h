@@ -10,17 +10,16 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <algorithm>
 #include <gsl/gsl_math.h>
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 #include <gsl/gsl_vector.h>
 #include <gsl/gsl_permutation.h>
 #include <gsl/gsl_sort_vector.h>
-
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_sort_double.h>
 #include <gsl/gsl_eigen.h>
-
 #include <boost/program_options.hpp>
 #include <ctime>
 #define PI 3.14159265

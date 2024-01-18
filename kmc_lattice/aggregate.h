@@ -5,8 +5,8 @@
 #include "utils.h"
 #include "molecule.h"
 #include "hbond.h"
-#include "xyz.h"
-#include "quarternion.h"
+
+
 class Aggregate
 {
 private:
@@ -24,12 +24,11 @@ private:
         }
     }*/
 public:
-    double L;
+    //int Ng;
     int n; //number of particles
     vector<int> M_A; //vector of Molecules
     double rg2; //radius of gyration squared;
-    XYZ cm;
-    Aggregate(){n=0; rg2=0.0;cm=XYZ(0,0,0);}
+    Aggregate(){n=0; rg2=0.0;}
     /*vector<vector<Molecule>> getConnectedComponents() {
         vector<bool> visited(n, false);
         vector<vector<Molecule>> connectedComponents;

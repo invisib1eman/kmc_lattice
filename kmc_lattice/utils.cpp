@@ -1,207 +1,77 @@
 //NANOROD: utils.cpp Utilities Functions (Revision Date: Oct 27, 2023)
 #include "utils.h"
 //do not assume where the particle is (particle may have crossed the box twice or more)
-XYZ image(XYZ p, double L)//note that every time we calculate vectors or distances we need to image XYZ
+vector<int> Lattice_index2_4index(int LatticeID,int Ng,int Nbasis)
 {
-  XYZ xyz;
-  xyz.x=myfmod(p.x+0.5*L, L)-0.5*L;
-  xyz.y=myfmod(p.y+0.5*L, L)-0.5*L;
-  xyz.z=myfmod(p.z+0.5*L, L)-0.5*L;
-  return xyz;
+  vector<int> Lattice4ID(4);
+  Lattice4ID[3]=LatticeID%Nbasis;
+  Lattice4ID[0]=(LatticeID/Nbasis)%Ng;
+  Lattice4ID[1]=(LatticeID/Nbasis/Ng)%Ng;
+  Lattice4ID[2]=(LatticeID/Nbasis/Ng/Ng)%Ng;
+  return Lattice4ID;  
 }
-double myfmod(double x, double y)
+//ID=Nbasis*(IDx+Ng*IDy+Ng*Ng*IDz)+IDbasis
+int Lattice_4index2_index(vector<int> Lattice4ID,int Ng,int Nbasis)
 {
-  double temp=fmod(x,y);
-  if(temp>=0.0)
-    return temp;
-  else
-    return temp+y;
+  return Nbasis*(Lattice4ID[0]+Ng*Lattice4ID[1]+Ng*Ng*Lattice4ID[2])+Lattice4ID[3];
 }
-//Minimum image distance squared: pass original coordinates
-double min_d2(XYZ a, XYZ b, double L)
+XYZ Lattice4ID2XYZ(vector<int> Lattice4ID,vector<XYZ> BasisPoints,vector<XYZ> LatticeVectors)
 {
-    a=image(a,L);
-    b=image(b,L);
-    XYZ d=a-b;
-    d.my_abs();
-    if(d.x>=0.5*L)
-      d.x=L-d.x;
-    
-    if(d.y>=0.5*L)
-      d.y=L-d.y;
-    
-    if(d.z>=0.5*L)
-      d.z=L-d.z;
-    
-    return d.norm2();
+    return XYZ(LatticeVectors[0].x*Lattice4ID[0]+LatticeVectors[1].x*Lattice4ID[1]+LatticeVectors[2].x*Lattice4ID[2]+BasisPoints[Lattice4ID[3]].x,LatticeVectors[0].y*Lattice4ID[0]+LatticeVectors[1].y*Lattice4ID[1]+LatticeVectors[2].y*Lattice4ID[2]+BasisPoints[Lattice4ID[3]].y,LatticeVectors[0].z*Lattice4ID[0]+LatticeVectors[1].z*Lattice4ID[1]+LatticeVectors[2].z*Lattice4ID[2]+BasisPoints[Lattice4ID[3]].z);
 }
-XYZ real_vector(XYZ origin,double L)//after image,get the real vectors
+vector<int> Translate_Lattice4ID(vector<int> Lattice4ID,vector<int> Lattice4ID_translate,int Ng)
 {
-  XYZ real=origin;
-  if(origin.x>0.5*L)
+  vector<int> new_Lattice4ID(4,0);
+  std::transform (Lattice4ID.begin(), Lattice4ID.end(), Lattice4ID_translate.begin(), new_Lattice4ID.begin(), std::plus<int>());
+  for(int i=0;i<3;i++)
   {
-    real.x=origin.x-L;
+    if(new_Lattice4ID[i]<0)
+      new_Lattice4ID[i]+=Ng;
+    if(new_Lattice4ID[i]>=Ng)
+      new_Lattice4ID[i]-=Ng;
   }
-  if(origin.x<-0.5*L)
-  {
-    real.x=origin.x+L;
-  }
-  if(origin.y>0.5*L)
-  {
-    real.y=origin.y-L;
-  }
-  if(origin.y<-0.5*L)
-  {
-    real.y=origin.y+L;
-  }
-  if(origin.z>0.5*L)
-  {
-    real.z=origin.z-L;
-  }
-  if(origin.z<-0.5*L)
-  {
-    real.z=origin.z+L;
-  }
-  return real;
+  return new_Lattice4ID;
 }
-
-XYZ RandomTranslate(XYZ old, double step,double u,double v)
+int bondarm(int arm)
 {
-    
-    double theta=2.0*M_PI*u;
-    double phi=acos(2.0*v-1.0);
-    return XYZ(old.x+step*cos(theta)*sin(phi),old.y+step*sin(theta)*sin(phi),old.z+step*cos(phi));
+  return arm;//match in our definition
 }
-XYZ RandomTranslatestep(double step,double u,double v)
-{
-    
-    double theta=2.0*M_PI*u;
-    double phi=acos(2.0*v-1.0);
-    return XYZ(step*cos(theta)*sin(phi),step*sin(theta)*sin(phi),step*cos(phi));
-}
-
-quarternion RandomRotate(quarternion old, double step,double a,double b)
-{
-    
-    double theta=step;
-    double alpha=acos(2.0*a-1.0);
-    double beta=2.0*M_PI*(b-0.5);
-    quarternion rotate=angle_to_quarternion(theta,alpha,beta);
-    quarternion neworientation=quartermulti(rotate,old);
-    neworientation.normalize();
-    return neworientation;
-}
-quarternion RandomRotatestep(double step,double a,double b)
-{
-    double theta=step;
-    double alpha=acos(2.0*a-1.0);
-    double beta=2.0*M_PI*(b-0.5);
-    quarternion rotate=angle_to_quarternion(theta,alpha,beta);
-    return rotate;
-}
-int getNum(vector<int>& v)
-{
- 
-    // Size of the vector
-    int n = v.size();
- 
-    // Generate a random number
-    srand(time(NULL));
- 
-    // Make sure the number is within
-    // the index range
-    int index = rand() % n;
- 
-    // Get random number from the vector
-    int num = v[index];
- 
-    // Remove the number from the vector
-    swap(v[index], v[n - 1]);
-    v.pop_back();
- 
-    // Return the removed number
-    return num;
-}
- 
-// Function to generate n non-repeating random numbers
-vector<int> generateRandom(int n)
-{
-    vector<int> v(n);
- 
-    // Fill the vector with the values
-    // 1, 2, 3, ..., n
-    for (int i = 0; i < n; i++)
-        v[i] = i + 1;
-    vector<int> randomv;
-    // While vector has elements
-    // get a random number from the vector and print it
-    while (v.size()) {
-        randomv.push_back(getNum(v));
-    }
-    return randomv;
-}
-//inner product of two vectors
-double inner_product(XYZ a,XYZ b)
-{
-  return a.x*b.x+a.y*b.y+a.z*b.z;
-}
-//cross product of two vectors
-XYZ cross_product(XYZ a,XYZ b)
-{
-  return XYZ(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
-}
-//calculate angle between two vectors
-double angle_vectors(XYZ a,XYZ b)
-{
-  return acos(inner_product(a,b)/(a.norm()*b.norm()));
-}
-double dihedral_vectors(XYZ a,XYZ b,XYZ c)
-{
-    return atan2(b.norm()*inner_product(a,cross_product(b,c))/(cross_product(a,b).norm()*cross_product(b,c).norm()),inner_product(cross_product(a,b),cross_product(b,c))/(cross_product(a,b).norm()*cross_product(b,c).norm()));
-}
-int GridIndex_index(int i,int j,int k,int n)
-{
-  if(i>n-1)
-    i-=n;
-  else if(i<0)
-    i+=n;
-  if(j>n-1)
-    j-=n;
-  else if(j<0)
-    j+=n;
-  if(k>n-1)
-    k-=n;
-  else if(k<0)
-    k+=n;
-  return n*n*k+n*j+i;
-}
-int GridIndex_xyz(XYZ& p,int n,double dl,double L)
-{
-  int i=int(floor((p.x+0.5*L)/dl));
-  int j=int(floor((p.y+0.5*L)/dl));
-  int k=int(floor((p.z+0.5*L)/dl));
-  return n*n*k+n*j+i;
-
-}
-void GridLoc(int& i,int& j,int& k,int n,int index)
-{
-  i=index%n;
-  j=((index-i)/n)%n;
-  k=(index-i-j*n)/(n*n);
-}
+//return armindex of neighbor arm of arm n
 int neighborarm(int n)
 {
   return n+1-2*(n%2);
 }
-vector<Molecule> generate_unitcell(Molecule M1)
+void DFSUtil(int index_ag,int v,bool visited[],vector<Molecule>& M,Aggregate& pnew_aggregate)
 {
-
-}
-vector<Molecule> generate_newunit(vector<Molecule> origin_cell,int latticeindex1,int latticeindex2,int latticeindex3)
-{
+  visited[v]=true;
+  M[v].AID=index_ag;
+  (pnew_aggregate).M_A.push_back(M[v].MOL_ID);
+  (pnew_aggregate).n+=1;
+  vector<hbond>::iterator i;
+  for(i=M[v].hbond_list.begin();i!=M[v].hbond_list.end();++i)
+  {
+    hbond j=*i;
+    int next=j.M2;
+    if(!visited[next])
+    {
+      DFSUtil(index_ag,next,visited,M,pnew_aggregate);
+    }
+  }
   
 }
-bool Aresame(double a,double b)
+int newvertype(int oldvertype,int changevertype)
 {
-    return fabs(a-b)<DBL_EPSILON;
+  int newvertype=oldvertype+changevertype;
+  if(newvertype>=4)
+    newvertype-=4;
+  if(newvertype<0)
+   newvertype+=4;
+  return newvertype;
+}
+bool bondstate(int armstate1,int armstate2)
+{
+  if(armstate1+armstate2==3)
+    return true;
+  else
+    return false;
 }

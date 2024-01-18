@@ -5,8 +5,7 @@
 #include "utils.h"
 #include "molecule.h"
 #include "hbond.h"
-#include "xyz.h"
-#include "quarternion.h"
+
 class Energy
 {
 public:
