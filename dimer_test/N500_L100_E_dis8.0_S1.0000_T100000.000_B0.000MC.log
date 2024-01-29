@@ -1,5 +1,4 @@
-         E_a           8K_break           0Box_length         100N_particle         500Simulation time      100000
-       sweep	        time	      energy	  acceptN_aggregatebond_formingbond_breaking
+       sweep	        time	      energy	  accept  N_aggregate bond_forming  bond_breaking
            0	           0	           0	       0     500       0       0
         1432	     999.934	           0	 782.534     458      42       0
         2864	     1999.87	           0	 750.724     432      26       0

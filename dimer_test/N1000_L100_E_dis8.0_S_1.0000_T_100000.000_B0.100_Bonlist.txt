@@ -1,0 +1,552 @@
+TIMESTEP
+2512
+   molecule1	   molecule2	        arm1	    arm2
+         377         157           0           0
+         235         756           3           3
+          30         508           5           5
+         532         717           3           3
+         328         470           4           4
+         408         925           1           1
+         870         506           5           5
+         174         630           3           3
+         131         625           2           2
+         543         646           1           1
+         923         698           5           5
+         365          87           4           4
+         312          81           3           3
+         884         647           1           1
+         234         290           1           1
+         101         522           3           3
+          29         724           5           5
+         228         880           5           5
+         295         129           4           4
+         675         155           1           1
+         879         455           2           2
+         432         937           1           1
+         746          11           0           0
+         849         892           5           5
+         187         933           4           4
+         909         920           1           1
+         117         324           5           5
+         142         149           2           2
+         489         804           5           5
+         315         143           1           1
+         301         542           0           0
+         640          74           4           4
+         962         331           4           4
+         752         119           5           5
+         610         629           2           2
+         291         480           3           3
+         592         229           5           5
+         957         472           4           4
+         130         555           4           4
+          45         530           3           3
+         305         196           4           4
+         493         755           4           4
+         924         264           2           2
+         261         538           3           3
+         864         832           0           0
+           9           1           2           2
+         863         518           0           0
+         289           8           4           4
+         644         224           2           2
+         215         848           5           5
+         482         617           0           0
+         469         782           4           4
+          35          21           1           1
+         173         106           4           4
+         465         988           0           0
+          58         211           0           0
+          72         680           0           0
+         206         954           2           2
+         332         116           5           5
+         742         949           5           5
+         251         959           0           0
+         735         704           2           2
+         950         930           4           4
+TIMESTEP
+5024
+   molecule1	   molecule2	        arm1	    arm2
+         377         157           0           0
+         532         717           3           3
+         174         630           3           3
+         312          81           3           3
+         228         880           5           5
+         117         324           5           5
+         142         149           2           2
+         962         331           4           4
+          45         530           3           3
+         305         196           4           4
+           9           1           2           2
+         332         116           5           5
+         742         949           5           5
+         735         704           2           2
+         815         853           3           3
+         792         466           0           0
+         388         871           0           0
+         585         971           0           0
+         202         841           3           3
+         494         319           4           4
+         217         216           3           3
+         605         985           2           2
+         563         682           5           5
+         808         395           0           0
+         415         823           5           5
+         944         801           0           0
+         634         803           5           5
+         277         586           3           3
+         491         444           3           3
+         844         481           1           1
+         156         208           3           3
+          13          67           4           4
+          44         118           4           4
+         434         384           2           2
+         905         566           5           5
+         254         702           3           3
+         145         252           0           0
+          61         816           5           5
+         943         973           2           2
+         389         739           3           3
+         951         423           2           2
+         921         587           4           4
+         453         749           1           1
+         126         574           1           1
+         411         899           5           5
+         715         442           1           1
+         745         207           1           1
+         873         627           5           5
+         780          71           4           4
+         568          53           5           5
+         488         919           5           5
+         544         881           5           5
+         672         500           4           4
+          39         362           3           3
+         133         378           1           1
+         313         888           2           2
+TIMESTEP
+7536
+   molecule1	   molecule2	        arm1	    arm2
+         312          81           3           3
+         305         196           4           4
+         332         116           5           5
+         792         466           0           0
+         217         216           3           3
+         605         985           2           2
+         277         586           3           3
+         905         566           5           5
+         951         423           2           2
+         453         749           1           1
+         715         442           1           1
+         745         207           1           1
+         133         378           1           1
+         313         888           2           2
+         351         433           5           5
+         345         901           4           4
+         260         529           1           1
+         565          15           3           3
+         733          77           1           1
+         139         720           0           0
+         194         520           4           4
+         364         851           3           3
+         128         414           1           1
+         970         926           5           5
+         727         122           5           5
+         677         168           5           5
+         600         166           5           5
+          55         734           1           1
+         343         456           0           0
+         182         829           1           1
+         393         906           1           1
+         991         464           3           3
+         299         341           3           3
+         812         697           3           3
+         968         402           5           5
+          64         405           4           4
+          20         898           1           1
+TIMESTEP
+10048
+   molecule1	   molecule2	        arm1	    arm2
+         312          81           3           3
+         605         985           2           2
+         182         829           1           1
+         299         341           3           3
+         847         418           2           2
+          16         877           1           1
+         869         511           1           1
+         708         656           4           4
+         705         326           5           5
+          27         701           2           2
+         307         751           1           1
+          88         747           3           3
+         788         846           1           1
+         842         528           2           2
+TIMESTEP
+12560
+   molecule1	   molecule2	        arm1	    arm2
+         312          81           3           3
+         299         341           3           3
+          16         877           1           1
+         708         656           4           4
+         705         326           5           5
+         370         255           0           0
+         922         699           1           1
+         330         989           3           3
+         407         278           2           2
+         670         505           4           4
+         775         258           5           5
+         577         872           5           5
+         416         961           5           5
+         309          76           0           0
+TIMESTEP
+15072
+   molecule1	   molecule2	        arm1	    arm2
+         312          81           3           3
+         407         278           2           2
+         670         505           4           4
+          49         890           3           3
+          41         582           2           2
+         712         325           2           2
+          26         806           5           5
+         271         840           1           1
+         461         203           4           4
+         810         292           0           0
+         790         679           4           4
+TIMESTEP
+17584
+   molecule1	   molecule2	        arm1	    arm2
+         312          81           3           3
+          49         890           3           3
+         810         292           0           0
+         984          85           4           4
+         910         650           2           2
+         593          46           1           1
+         249         484           0           0
+         512         507           1           1
+         127         302           2           2
+         552         125           2           2
+         821         419           3           3
+         773         361           0           0
+          86         904           1           1
+          60         441           2           2
+         514         800           1           1
+         304         914           1           1
+TIMESTEP
+20096
+   molecule1	   molecule2	        arm1	    arm2
+          49         890           3           3
+         910         650           2           2
+         249         484           0           0
+         127         302           2           2
+         635          33           5           5
+         741           6           5           5
+         281         499           3           3
+         471         534           3           3
+         400         997           5           5
+         457         599           2           2
+TIMESTEP
+22608
+   molecule1	   molecule2	        arm1	    arm2
+         281         499           3           3
+         163         819           4           4
+         663         748           0           0
+TIMESTEP
+25120
+   molecule1	   molecule2	        arm1	    arm2
+         163         819           4           4
+         410         791           3           3
+         503         171           5           5
+         903         349           5           5
+TIMESTEP
+27632
+   molecule1	   molecule2	        arm1	    arm2
+         410         791           3           3
+TIMESTEP
+30144
+   molecule1	   molecule2	        arm1	    arm2
+         913         495           5           5
+         655         711           2           2
+         107         709           3           3
+TIMESTEP
+32656
+   molecule1	   molecule2	        arm1	    arm2
+         913         495           5           5
+         655         711           2           2
+         107         709           3           3
+         357         674           5           5
+         153         624           0           0
+TIMESTEP
+35168
+   molecule1	   molecule2	        arm1	    arm2
+         974         265           0           0
+TIMESTEP
+37680
+   molecule1	   molecule2	        arm1	    arm2
+         974         265           0           0
+         329         403           5           5
+TIMESTEP
+40192
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+42704
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+45216
+   molecule1	   molecule2	        arm1	    arm2
+          48         524           5           5
+TIMESTEP
+47728
+   molecule1	   molecule2	        arm1	    arm2
+         891         579           0           0
+         936         250           2           2
+TIMESTEP
+50240
+   molecule1	   molecule2	        arm1	    arm2
+         891         579           0           0
+         703         858           4           4
+TIMESTEP
+52752
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+55264
+   molecule1	   molecule2	        arm1	    arm2
+         654         462           1           1
+TIMESTEP
+57776
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+60288
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+62800
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+65312
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+67824
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+70336
+   molecule1	   molecule2	        arm1	    arm2
+         728         632           1           1
+TIMESTEP
+72848
+   molecule1	   molecule2	        arm1	    arm2
+         666         955           4           4
+TIMESTEP
+75360
+   molecule1	   molecule2	        arm1	    arm2
+         781         226           2           2
+TIMESTEP
+77872
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+80384
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+82896
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+85408
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+87920
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+90432
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+92944
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+95456
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+97968
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+100480
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+102992
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+105504
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+108016
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+110528
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+113040
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+115552
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+118064
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+120576
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+123088
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+125600
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+128112
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+130624
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+133136
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+135648
+   molecule1	   molecule2	        arm1	    arm2
+         960         417           1           1
+TIMESTEP
+138160
+   molecule1	   molecule2	        arm1	    arm2
+         754          42           1           1
+TIMESTEP
+140672
+   molecule1	   molecule2	        arm1	    arm2
+         754          42           1           1
+TIMESTEP
+143184
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+145696
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+148208
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+150720
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+153232
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+155744
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+158256
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+160768
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+163280
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+165792
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+168304
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+170816
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+173328
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+175840
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+178352
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+180864
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+183376
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+185888
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+188400
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+190912
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+193424
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+195936
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+198448
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+200960
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+203472
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+205984
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+208496
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+211008
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+213520
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+216032
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+218544
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+221056
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+223568
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+226080
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+228592
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+231104
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+233616
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+236128
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+238640
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+241152
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+243664
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+246176
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+248688
+   molecule1	   molecule2	        arm1	    arm2
+TIMESTEP
+251200
+   molecule1	   molecule2	        arm1	    arm2

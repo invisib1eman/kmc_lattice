@@ -82,10 +82,12 @@ class System
         gsl_T = gsl_rng_default;
         gsl_r = gsl_rng_alloc(gsl_T);
         gsl_rng_set(gsl_r, GSL_SEED);
-        deltat=1.0/K_total;
-        cout<<deltat<<endl;
-        nsweep=int(ceil(total_time/deltat));
+        
         K_total=K_Dtotal+K_Break+K_swap;
+        deltat=1.0/K_total;
+        
+        nsweep=int(ceil(total_time/deltat));
+        cout<<deltat<<endl;
         P_swap=K_swap/K_total;//probability of arm rotation
         P_break=K_Break/K_total;//probability of bond break
         Nlattice=Ng*Ng*Ng*Nbasis;
