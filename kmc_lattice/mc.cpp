@@ -119,96 +119,96 @@ double MC::MoveMolecule()
             
         }
     }
-    if(rand>S.P_swap&&rand<(S.P_break+S.P_swap))//the relative frequency of breaking bond to frequency of diffusion step
+        if (rand > S.P_swap && rand < (S.P_break + S.P_swap)) // the relative frequency of breaking bond to frequency of diffusion step
     {
-        for(it=S.H.begin();it!=S.H.end();)
+        for (it = S.H.begin(); it != S.H.end();)
         {
-            hbond old_hbond=*it;
-            //calculate bond_dissociation energy
-            double E_dis=0;
-            int free_bonds=0;
-            E_dis+=S.E_1;//the basic enthalpy change of one bond
-            //count # of freed bonds
-            //find neighbor arms,first the one of M1, then the one of M2
-            int neighborarm1=neighborarm(old_hbond.arm1);
-            free_bonds+=2;
-            int bonded_index1;
-            vector<hbond> old_hbondlist=S.M[old_hbond.M1].hbond_list;
-            for(int p=0;p<old_hbondlist.size();p++)
-            {
-                if(old_hbondlist[p].arm1==neighborarm1)
-                {
-                    free_bonds-=2;
-                }
-                if(old_hbondlist[p].arm1==old_hbond.arm1)
-                {
-                    bonded_index1=p;
-                }
-            } 
-            int neighborarm2=neighborarm(old_hbond.arm2);
-            free_bonds+=2;
-            vector<hbond> bonded_neighbor_hbondlist=S.M[old_hbond.M2].hbond_list;
-            int bonded_index2;
-            for(int p=0;p<bonded_neighbor_hbondlist.size();p++)
-            {
-                if(bonded_neighbor_hbondlist[p].arm1==neighborarm2)
-                {
-                    free_bonds-=2;
-                }
-                if(bonded_neighbor_hbondlist[p].arm1==old_hbond.arm2)
-                    bonded_index2=p;
-                
-            }                 
-            E_dis+=free_bonds*S.free_bond_freeenergy;
-                
-            if(Arrhenius(1,E_dis,gsl_rng_uniform(S.gsl_r)))
-            {
-                //break bond
-                out<<"Break bond"<<setw(12)<<old_hbond.M1<<setw(12)<<old_hbond.M2<<setw(12)<<old_hbond.arm1<<setw(12)<<old_hbond.arm2<<endl;
+            hbond old_hbond = *it;
+            // calculate bond_dissociation energy
+            double E_dis = 0;
 
-                S.M[old_hbond.M1].bondstate[old_hbond.arm1]=false;
-                S.M[old_hbond.M1].hbond_list[bonded_index1]=S.M[old_hbond.M1].hbond_list.back();
-                S.M[old_hbond.M1].nbonds-=1;
+            int free_bonds = 0;
+            E_dis += S.E_1; // the basic enthalpy change of one bond
+            // count # of freed bonds
+            // find neighbor arms,first the one of M1, then the one of M2
+            int neighborarm1 = neighborarm(old_hbond.arm1);
+            free_bonds += 2;
+            int bonded_index1;
+            vector<hbond> old_hbondlist = S.M[old_hbond.M1].hbond_list;
+            for (int p = 0; p < old_hbondlist.size(); p++)
+            {
+                if (old_hbondlist[p].arm1 == neighborarm1)
+                {
+                    free_bonds -= 2;
+                }
+                if (old_hbondlist[p].arm1 == old_hbond.arm1)
+                {
+                    bonded_index1 = p;
+                }
+            }
+            int neighborarm2 = neighborarm(old_hbond.arm2);
+            free_bonds += 2;
+            vector<hbond> bonded_neighbor_hbondlist = S.M[old_hbond.M2].hbond_list;
+            int bonded_index2;
+            for (int p = 0; p < bonded_neighbor_hbondlist.size(); p++)
+            {
+                if (bonded_neighbor_hbondlist[p].arm1 == neighborarm2)
+                {
+                    free_bonds -= 2;
+                }
+                if (bonded_neighbor_hbondlist[p].arm1 == old_hbond.arm2)
+                    bonded_index2 = p;
+            }
+
+            E_dis += free_bonds * S.free_bond_freeenergy;
+
+            if (Arrhenius(1, E_dis, gsl_rng_uniform(S.gsl_r)))
+            {
+                // break bond
+                out << "Break bond" << setw(12) << old_hbond.M1 << setw(12) << old_hbond.M2 << setw(12) << old_hbond.arm1 << setw(12) << old_hbond.arm2 << endl;
+                
+                S.M[old_hbond.M1].bondstate[old_hbond.arm1] = false;
+                S.M[old_hbond.M1].hbond_list[bonded_index1] = S.M[old_hbond.M1].hbond_list.back();
+                S.M[old_hbond.M1].nbonds -= 1;
                 S.M[old_hbond.M1].hbond_list.pop_back();
-                S.M[old_hbond.M2].bondstate[old_hbond.arm2]=false;
-                S.M[old_hbond.M2].hbond_list[bonded_index2]=S.M[old_hbond.M2].hbond_list.back();
-                S.M[old_hbond.M2].nbonds-=1;
+                
+                S.M[old_hbond.M2].bondstate[old_hbond.arm2] = false;
+                S.M[old_hbond.M2].hbond_list[bonded_index2] = S.M[old_hbond.M2].hbond_list.back();
+                S.M[old_hbond.M2].nbonds -= 1;
                 S.M[old_hbond.M2].hbond_list.pop_back();
-                it=S.H.erase(it);        
+                
+                it = S.H.erase(it);
             }
             else
             {
                 ++it;
             }
         }
-        //recalculate clusters
-        bool* visited=new bool[S.NMOL];
-        for(int i=0;i<S.NMOL;i++)
+        // recalculate clusters
+        bool *visited = new bool[S.NMOL];
+        for (int i = 0; i < S.NMOL; i++)
         {
-            visited[i]=false;
+            visited[i] = false;
         }
         S.Ag.clear();
-        int index_ag=0;
-        for (int v = 0; v < S.NMOL; v++) 
+        int index_ag = 0;
+        for (int v = 0; v < S.NMOL; v++)
         {
-            if (visited[v] == false) 
+            if (visited[v] == false)
             {
-                //Create new aggregate
-                
+                // Create new aggregate
+
                 Aggregate new_aggregate;
-                
+
                 // Visited v and its neighbors
-                
-                DFSUtil(index_ag,v, visited,S.M,new_aggregate);
+
+                DFSUtil(index_ag, v, visited, S.M, new_aggregate);
                 S.Ag.push_back(new_aggregate);
                 index_ag++;
             }
-            
         }
-        
 
-        S.NAg=S.Ag.size();
-        
+        S.NAg = S.Ag.size();
     }
     nbond_mol=0;
     nbond=S.H.size();
@@ -355,7 +355,7 @@ double MC::MoveMolecule()
             }
             if(occupied==false && unmatched==false)
             {
-                //update lattice
+                //pre update lattice
                 for(int i=0;i<old_aggregate.n;i++)
                 {
                     int mol_id=old_aggregate.M_A[i];
@@ -386,10 +386,8 @@ double MC::MoveMolecule()
                     {
                         
                         
-                        if(S.M[mol_id].bondstate[k]==true)
-                            continue;
-                        else
-                        {
+                        
+                        
                             vector<int> neighbor_Lattice4ID=Translate_Lattice4ID(new_Lattice4ID,Neighborlist[k],S.Ng);
                             int neighbor_LatticeID=Lattice_4index2_index(neighbor_Lattice4ID,S.Ng,S.Nbasis);
                             if(neighbor_Lattice4ID[3]==new_Lattice4ID[3])
@@ -411,11 +409,12 @@ double MC::MoveMolecule()
                                     
                                     //Update molecules
                                     int neighbormol_id=S.lattice.molid_list[neighbor_LatticeID];
-                                    S.M[mol_id].bondstate[k]=true;
+                                    S.M[mol_id].bondstate[k] = true;
                                     S.M[mol_id].nbonds+=1;
                                     S.M[mol_id].hbond_list.push_back(hbond(mol_id,neighbormol_id,k,bondarm(k)));
-                                    S.M[neighbormol_id].bondstate[bondarm(k)]=true;
+                                    
                                     S.M[neighbormol_id].nbonds+=1;
+                                    S.M[mol_id].bondstate[k] = true;
                                     S.M[neighbormol_id].hbond_list.push_back(hbond(neighbormol_id,mol_id,bondarm(k),k));
                                     //Update hbondlist
                                     S.H.push_back(hbond(mol_id,neighbormol_id,k,bondarm(k)));
@@ -457,7 +456,7 @@ double MC::MoveMolecule()
                                         S.NAg-=1;
                                     }
                                 }
-                            }
+                            
                         }
                     }
                 }

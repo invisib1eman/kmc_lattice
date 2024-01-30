@@ -65,18 +65,10 @@ void System::Create()
     m1.MOL_ID=0;
     m1.AID=0;//at first each molecule is one aggregate
     m1.AsubID=0;//every molecule is the only element of the aggregate
-    int trial_lattice;
-    while (-1)
-    {
-        trial_lattice=gsl_rng_uniform_int(gsl_r,Nlattice);
-        if(lattice.molid_list[trial_lattice]==-1)
-        {
-            break;
-        }
-    }
+  
     
-    m1.LatticeID=trial_lattice;
-    m1.Lattice4ID=Lattice_index2_4index(m1.LatticeID,Ng,Nbasis);
+    m1.Lattice4ID={25,25,25,0};
+    m1.LatticeID=Lattice_4index2_index(m1.Lattice4ID,Ng,Nbasis);
     m1.hbond_list.clear();
     m1.nbonds=4;
     //initialize vertypes of arms
@@ -85,7 +77,7 @@ void System::Create()
     m1.bondstate[4]=true;
     m1.bondstate[5]=true;
     m1.vertype[0]=0;
-    m1.vertype[neighborarm(0)]=0;
+    m1.vertype[1]=0;
     m1.vertype[2]=1;
     m1.vertype[3]=3;
     m1.vertype[4]=0;
@@ -104,7 +96,7 @@ void System::Create()
     
     
     
-    m2.Lattice4ID=Translate_Lattice4ID(m1.Lattice4ID,NeighborLista[0],Ng);
+    m2.Lattice4ID={25,25,25,1};
     m2.LatticeID=Lattice_4index2_index(m2.Lattice4ID,Ng,Nbasis);
     m2.hbond_list.clear();
     m2.nbonds=4;
@@ -114,7 +106,7 @@ void System::Create()
     m2.bondstate[1]=true;
     m2.bondstate[3]=true;
     m2.vertype[0]=3;
-    m2.vertype[neighborarm(0)]=3;
+    m2.vertype[1]=3;
     m2.vertype[2]=3;
     m2.vertype[3]=3;
     m2.vertype[4]=0;
@@ -130,9 +122,8 @@ void System::Create()
     
     
     
-    vector<int> Movement(4,0);
-    Movement[0]=1;
-    m3.Lattice4ID=Translate_Lattice4ID(m1.Lattice4ID,Movement,Ng);
+    
+    m3.Lattice4ID={26,25,25,0};
     m3.LatticeID=Lattice_4index2_index(m3.Lattice4ID,Ng,Nbasis);
     m3.hbond_list.clear();
     m3.nbonds=4;
@@ -142,7 +133,7 @@ void System::Create()
     m3.bondstate[4]=true;
     m3.bondstate[5]=true;
     m3.vertype[0]=3;
-    m3.vertype[neighborarm(0)]=3;
+    m3.vertype[1]=3;
     m3.vertype[2]=0;
     m3.vertype[3]=0;
     m3.vertype[4]=0;
@@ -160,9 +151,8 @@ void System::Create()
     
     
     
-    vector<int> Movement2(4,0);
-    Movement2[1]=1;
-    m4.Lattice4ID=Translate_Lattice4ID(m2.Lattice4ID,Movement2,Ng);
+    
+    m4.Lattice4ID={25,26,25,1};
     m4.LatticeID=Lattice_4index2_index(m4.Lattice4ID,Ng,Nbasis);
     m4.hbond_list.clear();
     m4.nbonds=4;
@@ -172,7 +162,7 @@ void System::Create()
     m4.bondstate[0]=true;
     m4.bondstate[1]=true;
     m4.vertype[0]=3;
-    m4.vertype[neighborarm(0)]=3;
+    m4.vertype[1]=3;
     m4.vertype[2]=0;
     m4.vertype[3]=0;
     m4.vertype[4]=3;
@@ -189,7 +179,7 @@ void System::Create()
     
     
     
-    m5.Lattice4ID=Translate_Lattice4ID(m1.Lattice4ID,Movement2,Ng);
+    m5.Lattice4ID={25,26,25,0};
     m5.LatticeID=Lattice_4index2_index(m5.Lattice4ID,Ng,Nbasis);
     m5.hbond_list.clear();
     m5.nbonds=4;
@@ -199,7 +189,7 @@ void System::Create()
     m5.bondstate[2]=true;
     m5.bondstate[3]=true;
     m5.vertype[0]=0;
-    m5.vertype[neighborarm(0)]=0;
+    m5.vertype[1]=0;
     m5.vertype[2]=0;
     m5.vertype[3]=0;
     m5.vertype[4]=0;
@@ -216,9 +206,8 @@ void System::Create()
     
     
     
-    vector<int> Movement3(4,0);
-    Movement3[0]=-1;
-    m6.Lattice4ID=Translate_Lattice4ID(m4.Lattice4ID,Movement3,Ng);
+    
+    m6.Lattice4ID={24,26,25,1};
     m6.LatticeID=Lattice_4index2_index(m6.Lattice4ID,Ng,Nbasis);
     m6.hbond_list.clear();
     m6.nbonds=4;
@@ -327,6 +316,7 @@ void System::Create()
         }
     }
     cout<<H.size()<<endl;
+    
     for(int i=0; i<NMOL-36; i++)
     {
         Molecule m;
