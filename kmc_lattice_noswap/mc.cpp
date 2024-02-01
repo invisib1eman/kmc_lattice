@@ -45,17 +45,25 @@ void MC::WriteTemplate()
     out << setw(12) << "sweep"
         << "\t" << setw(12) << "time"
         << "\t" << setw(12) << "energy"
-        << "\t" << setw(8) << "accept" << endl;
+        << "\t" << setw(8) << "accept" 
+        << "\t"<<setw(8)<<"maxcluster"<< endl;
     out.close();
 }
 
 void MC::LogProfile(int i, double accept)
 {
+    int maxag=0;
+    for(auto it=S.Ag.begin();it!=S.Ag.end();it++)
+    {
+        Aggregate j=*it;
+        if(j.n>maxag)
+            maxag=j.n;
+    }
     ofstream out;
     char FileName[200];
     sprintf(FileName, "N%d_L%d_E_dis%.1f_T%.3f_B%.3fMC.log", S.NMOL, S.Ng, S.E_1, S.total_time, S.K_Break);
     out.open(FileName, ios::app);
-    out << setw(12) << i << "\t" << setw(12) << time << "\t" << setw(12) << energy << "\t" << setw(8) << accept << endl;
+    out << setw(12) << i << "\t" << setw(12) << time << "\t" << setw(12) << energy << "\t" << setw(8) << accept <<"\t"<<setw(8)<<maxag<< endl;
 
     out.close();
 }

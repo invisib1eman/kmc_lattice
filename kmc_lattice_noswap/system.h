@@ -36,7 +36,7 @@ class System
     int MCstep=1; //MC step size
     double deltat=0; //Timestep
     double E_1=10;//hbond dis enthalpy
-    double free_bond_freeenergy=-1;//free bond entropy
+    double free_bond_freeenergy=-3;//free bond entropy
     double D=1;//D=kT/6pietaR is constant
     double K_Dp=4*D*2/pow((2.26*sqrt(3)),2);//Diffusion rate inside the plane
     double K_Dz=4*D*1/pow(2.12,2);//Diffusion rate in the z-direction
